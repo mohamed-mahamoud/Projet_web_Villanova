@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Festivals — VilleNova</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../sass/style.css" />
+</head>
+<body data-page="festivals">
+
+  <nav aria-label="Navigation principale">
+    <a href="index.html" class="logo" aria-label="VilleNova — Retour à l'accueil">VilleNova</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="expositions.html">Expositions</a></li>
+      <li><a href="concerts.html">Concerts</a></li>
+      <li><a href="festivals.html" class="active-festival" aria-current="page">Festivals</a></li>
+      <li><a href="spectacles.html">Spectacles</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenu-principal">
+
+    <div class="page-header festival" aria-labelledby="page-titre">
+      <div class="page-header-inner">
+        <p class="page-label">Agenda — Festivals</p>
+        <h1 id="page-titre">Festivals</h1>
+        <p>Musique, arts de rue, cinéma, gastronomie — vivez les grands rendez-vous culturels de VilleNova.</p>
+        <div class="search-wrap">
+          <form role="search" aria-label="Rechercher un festival">
+            <label for="search-festival" class="sr-only">Rechercher un festival</label>
+            <div class="search-bar festival">
+              <input id="search-festival" type="text" placeholder="Rechercher un festival…" autocomplete="off" />
+            </div>
+            <button class="btn-search festival" type="submit">Rechercher</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="titre-en-cours">
+      <div class="section-header festival">
+        <h2 id="titre-en-cours">En ce moment</h2>
+        <span class="count" id="count-en-cours" aria-live="polite"></span>
+      </div>
+      <div class="cards" id="cards-en-cours" aria-label="Festivals en cours">
+        <p role="status">Chargement…</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-avenir">
+      <div class="section-header festival">
+        <h2 id="titre-avenir">À venir</h2>
+        <span class="count" id="count-avenir" aria-live="polite"></span>
+      </div>
+      <div class="cards" id="cards-avenir" aria-label="Festivals à venir">
+        <p role="status">Chargement…</p>
+      </div>
+    </section>
+
+  </main>
+
+  <hr />
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">VilleNova</span>
+      <ul class="footer-links">
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Accessibilité</a></li>
+        <li><a href="#">Plan du site</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 VilleNova — Collectivité territoriale. Tous droits réservés.</p>
+    </div>
+  </footer>
+  <script src="../Java/api.js"></script>
+</body>
+</html>

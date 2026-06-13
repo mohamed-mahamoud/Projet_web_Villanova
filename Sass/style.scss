@@ -1,0 +1,1401 @@
+
+
+// ============================================
+// VILLENOVA — FEUILLE DE STYLE PRINCIPALE
+// ============================================
+
+
+// ============================================
+// 1. VARIABLES
+// ============================================
+
+// Couleurs globales
+$bg:               #F1EFE8;
+$dark:             #2C2C2A;
+$sep:              #D3D1C7;
+$text-muted:       #888780;
+$text-secondary:   #5F5E5A;
+$text-navbar:      #F1EFE8;
+
+// Expositions
+$expo-light:       #E6F1FB;
+$expo-main:        #378ADD;
+$expo-dark:        #0C447C;
+$expo-mid:         #185FA5;
+
+// Concerts
+$concert-light:    #FAEEDA;
+$concert-main:     #EF9F27;
+$concert-dark:     #633806;
+$concert-mid:      #854F0B;
+$concert-text:     #412402;
+
+// Festivals
+$festival-light:   #EEEDFE;
+$festival-main:    #7F77DD;
+$festival-dark:    #3C3489;
+$festival-mid:     #534AB7;
+
+// Spectacles
+$spectacle-light:  #E1F5EE;
+$spectacle-main:   #1D9E75;
+$spectacle-dark:   #085041;
+$spectacle-mid:    #0F6E56;
+
+// Typographie
+$font-titre:       'Playfair Display', serif;
+$font-texte:       'Inter', sans-serif;
+
+// Espacements
+$spacing-xs:       4px;
+$spacing-sm:       8px;
+$spacing-md:       16px;
+$spacing-lg:       24px;
+$spacing-xl:       32px;
+$spacing-xxl:      48px;
+
+// Bordures
+$radius-sm:        8px;
+$radius-md:        12px;
+$radius-full:      999px;
+
+// Breakpoints
+$mobile:           480px;
+$tablet:           768px;
+
+
+// ============================================
+// 2. RESET & BASE
+// ============================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $bg;
+  color: $dark;
+  font-family: $font-texte;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+// ============================================
+// 3. TYPOGRAPHIE
+// ============================================
+
+h1, h2, h3 {
+  font-family: $font-titre;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: $dark;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: $dark;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.95rem;
+  color: $text-secondary;
+}
+
+
+// ============================================
+// 4. NAVBAR
+// ============================================
+
+nav {
+  background: $dark;
+  padding: 0 $spacing-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .logo {
+    font-family: $font-titre;
+    color: $text-navbar;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: $spacing-sm;
+
+    a {
+      display: block;
+      padding: 7px $spacing-md;
+      border-radius: $radius-full;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: $text-navbar;
+      border: 0.5px solid $sep;
+      transition: border-color 0.2s;
+
+      &:hover {
+        border-color: $text-muted;
+      }
+
+      // États actifs par page
+      &.active-accueil {
+        background: $sep;
+        color: $dark;
+        border-color: $sep;
+      }
+
+      &.active-expo {
+        background: $expo-light;
+        color: $expo-dark;
+        border-color: $expo-main;
+      }
+
+      &.active-concert {
+        background: $concert-light;
+        color: $concert-dark;
+        border-color: $concert-main;
+      }
+
+      &.active-festival {
+        background: $festival-light;
+        color: $festival-dark;
+        border-color: $festival-main;
+      }
+
+      &.active-spectacle {
+        background: $spectacle-light;
+        color: $spectacle-dark;
+        border-color: $spectacle-main;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    padding: 0 $spacing-md;
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: $dark;
+      padding: $spacing-md;
+      gap: 6px;
+      border-top: 0.5px solid #444441;
+
+      &.open {
+        display: flex;
+      }
+
+      a {
+        border-radius: $radius-sm;
+        padding: 10px $spacing-md;
+      }
+    }
+  }
+}
+
+
+// ============================================
+// 5. PAGE HEADER (pages catégories)
+// ============================================
+
+.page-header {
+  padding: $spacing-xxl $spacing-lg $spacing-xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    opacity: 0.15;
+    background: currentColor;
+  }
+
+  &-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .page-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    margin-bottom: 0.7rem;
+  }
+
+  p {
+    max-width: 500px;
+    margin-bottom: $spacing-xl;
+  }
+
+  // Variantes par catégorie
+  &.expo {
+    background: linear-gradient(135deg, #B5D4F4 0%, $expo-light 60%);
+    h1, .page-label { color: $expo-dark; }
+    p { color: $expo-mid; }
+  }
+
+  &.concert {
+    background: linear-gradient(135deg, #FAC775 0%, $concert-light 60%);
+    h1, .page-label { color: $concert-dark; }
+    p { color: $concert-mid; }
+  }
+
+  &.festival {
+    background: linear-gradient(135deg, #CECBF6 0%, $festival-light 60%);
+    h1, .page-label { color: $festival-dark; }
+    p { color: $festival-mid; }
+  }
+
+  &.spectacle {
+    background: linear-gradient(135deg, #9FE1CB 0%, $spectacle-light 60%);
+    h1, .page-label { color: $spectacle-dark; }
+    p { color: $spectacle-mid; }
+  }
+
+  @media (max-width: $tablet) {
+    padding: $spacing-xl $spacing-md $spacing-lg;
+  }
+}
+
+
+// ============================================
+// 6. HERO (page d'accueil)
+// ============================================
+
+.hero {
+  padding: $spacing-xxl $spacing-lg $spacing-xl;
+  max-width: 900px;
+  margin: 0 auto;
+
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $text-muted;
+    margin-bottom: $spacing-md;
+  }
+
+  h1 {
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    margin-bottom: $spacing-xl;
+    max-width: 560px;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $spacing-xl $spacing-md $spacing-lg;
+  }
+}
+
+
+// ============================================
+// 7. BARRE DE RECHERCHE
+// ============================================
+
+.search-wrap {
+  display: flex;
+  gap: 12px;
+  max-width: 560px;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid $sep;
+  border-radius: $radius-full;
+  padding: 12px 20px;
+  transition: border-color 0.2s;
+
+  &:focus-within {
+    border-color: $dark;
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: $text-muted;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: $font-texte;
+    color: $dark;
+    background: transparent;
+
+    &::placeholder {
+      color: $text-muted;
+    }
+  }
+
+  // Variantes par catégorie
+  &.expo {
+    border-color: #85B7EB;
+    input::placeholder { color: #85B7EB; }
+    &:focus-within { border-color: $expo-main; }
+  }
+
+  &.concert {
+    border-color: #FAC775;
+    input::placeholder { color: #FAC775; }
+    &:focus-within { border-color: $concert-main; }
+  }
+
+  &.festival {
+    border-color: #CECBF6;
+    input::placeholder { color: #CECBF6; }
+    &:focus-within { border-color: $festival-main; }
+  }
+
+  &.spectacle {
+    border-color: #9FE1CB;
+    input::placeholder { color: #9FE1CB; }
+    &:focus-within { border-color: $spectacle-main; }
+  }
+}
+
+.btn-search {
+  background: $dark;
+  color: $text-navbar;
+  border: none;
+  border-radius: $radius-full;
+  padding: 12px $spacing-lg;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: $font-texte;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  // Variantes par catégorie
+  &.expo { background: $expo-dark; color: $expo-light; }
+  &.concert { background: $concert-dark; color: $concert-light; }
+  &.festival { background: $festival-dark; color: $festival-light; }
+  &.spectacle { background: $spectacle-dark; color: $spectacle-light; }
+}
+
+
+// ============================================
+// 8. FILTRES (chips)
+// ============================================
+
+.filter-row {
+  padding: $spacing-lg $spacing-lg $spacing-xl;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .filter-label {
+    font-size: 0.78rem;
+    color: $text-muted;
+    font-weight: 500;
+    margin-right: $spacing-xs;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $spacing-md;
+  }
+}
+
+.chip {
+  padding: 6px $spacing-md;
+  border-radius: $radius-full;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid $sep;
+  background: transparent;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: $font-texte;
+
+  &:hover,
+  &.active {
+    background: $dark;
+    color: $text-navbar;
+    border-color: $dark;
+  }
+
+  // Variantes par catégorie
+  &.expo {
+    border-color: #85B7EB;
+    color: $expo-mid;
+    &:hover, &.active { background: $expo-main; color: $expo-light; border-color: $expo-main; }
+  }
+
+  &.concert {
+    border-color: #FAC775;
+    color: $concert-mid;
+    &:hover, &.active { background: $concert-main; color: $concert-text; border-color: $concert-main; }
+  }
+
+  &.festival {
+    border-color: #CECBF6;
+    color: $festival-mid;
+    &:hover, &.active { background: $festival-main; color: $festival-light; border-color: $festival-main; }
+  }
+
+  &.spectacle {
+    border-color: #9FE1CB;
+    color: $spectacle-mid;
+    &:hover, &.active { background: $spectacle-main; color: $spectacle-light; border-color: $spectacle-main; }
+  }
+}
+
+
+// ============================================
+// 9. SECTIONS
+// ============================================
+
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg $spacing-xxl;
+
+  @media (max-width: $tablet) {
+    padding: 0 $spacing-md $spacing-xl;
+  }
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 0.5px solid $sep;
+
+  h2 {
+    font-family: $font-titre;
+    font-size: 1.4rem;
+  }
+
+  .see-all {
+    font-size: 0.8rem;
+    color: $text-muted;
+    font-weight: 500;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $dark;
+    }
+  }
+
+  .count {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: $radius-full;
+  }
+
+  // Variantes par catégorie
+  &.expo {
+    border-color: #85B7EB;
+    h2 { color: $expo-dark; }
+    .count { color: $expo-mid; background: $expo-light; border: 1px solid #B5D4F4; }
+  }
+
+  &.concert {
+    border-color: #FAC775;
+    h2 { color: $concert-dark; }
+    .count { color: $concert-mid; background: $concert-light; border: 1px solid #FAC775; }
+  }
+
+  &.festival {
+    border-color: #CECBF6;
+    h2 { color: $festival-dark; }
+    .count { color: $festival-mid; background: $festival-light; border: 1px solid #CECBF6; }
+  }
+
+  &.spectacle {
+    border-color: #9FE1CB;
+    h2 { color: $spectacle-dark; }
+    .count { color: $spectacle-mid; background: $spectacle-light; border: 1px solid #9FE1CB; }
+  }
+}
+
+
+// ============================================
+// 10. GRILLE DE CARTES
+// ============================================
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $spacing-md;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+// ============================================
+// 11. CARTE ÉVÉNEMENT
+// ============================================
+
+.card {
+  background: #fff;
+  border-radius: $radius-md;
+  border: 0.5px solid $sep;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(44, 44, 42, 0.1);
+  }
+
+  // Variantes de bordure par catégorie
+  &.expo { border-color: #B5D4F4; &:hover { box-shadow: 0 8px 24px rgba(12, 68, 124, 0.12); } }
+  &.concert { border-color: #FAC775; &:hover { box-shadow: 0 8px 24px rgba(99, 56, 6, 0.12); } }
+  &.festival { border-color: #CECBF6; &:hover { box-shadow: 0 8px 24px rgba(60, 52, 137, 0.12); } }
+  &.spectacle { border-color: #9FE1CB; &:hover { box-shadow: 0 8px 24px rgba(8, 80, 65, 0.12); } }
+}
+
+.card-img-wrap {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-img-placeholder {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body {
+  padding: 14px $spacing-md $spacing-md;
+}
+
+.card-title {
+  font-family: $font-titre;
+  font-size: 1rem;
+  margin-bottom: $spacing-sm;
+  line-height: 1.3;
+
+  &.expo { color: $expo-dark; }
+  &.concert { color: $concert-dark; }
+  &.festival { color: $festival-dark; }
+  &.spectacle { color: $spectacle-dark; }
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+
+  svg { flex-shrink: 0; }
+
+  &.expo { color: $expo-mid; }
+  &.concert { color: $concert-mid; }
+  &.festival { color: $festival-mid; }
+  &.spectacle { color: $spectacle-mid; }
+}
+
+.card-tag {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  font-size: 0.7rem;
+
+  &.expo { background: $expo-light; color: $expo-dark; border: 1px solid #B5D4F4; }
+  &.concert { background: $concert-light; color: $concert-dark; border: 1px solid #FAC775; }
+  &.festival { background: $festival-light; color: $festival-dark; border: 1px solid #CECBF6; }
+  &.spectacle { background: $spectacle-light; color: $spectacle-dark; border: 1px solid #9FE1CB; }
+}
+
+
+// ============================================
+// 12. CARTE MISE EN AVANT (highlight)
+// ============================================
+
+.card-highlight {
+  border-radius: $radius-md;
+  padding: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 220px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  .badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: $spacing-md;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: $spacing-sm;
+  }
+
+  &.expo {
+    background: $expo-dark;
+    &::before { background: rgba(55, 138, 221, 0.25); }
+    &:hover { box-shadow: 0 8px 24px rgba(12, 68, 124, 0.3); }
+    .card-title { color: $expo-light; }
+    .meta-row { color: #85B7EB; }
+  }
+
+  &.concert {
+    background: $concert-dark;
+    &::before { background: rgba(239, 159, 39, 0.2); }
+    &:hover { box-shadow: 0 8px 24px rgba(99, 56, 6, 0.3); }
+    .card-title { color: $concert-light; }
+    .meta-row { color: #FAC775; }
+  }
+
+  &.festival {
+    background: $festival-dark;
+    &::before { background: rgba(127, 119, 221, 0.25); }
+    &:hover { box-shadow: 0 8px 24px rgba(60, 52, 137, 0.3); }
+    .card-title { color: $festival-light; }
+    .meta-row { color: #CECBF6; }
+  }
+
+  &.spectacle {
+    background: $spectacle-dark;
+    &::before { background: rgba(29, 158, 117, 0.25); }
+    &:hover { box-shadow: 0 8px 24px rgba(8, 80, 65, 0.3); }
+    .card-title { color: $spectacle-light; }
+    .meta-row { color: #9FE1CB; }
+  }
+}
+
+
+// ============================================
+// 13. BADGES
+// ============================================
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 12px;
+  border-radius: $radius-full;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  &.expo     { background: $expo-main;     color: $expo-light; }
+  &.concert  { background: $concert-main;  color: $concert-text; }
+  &.festival { background: $festival-main; color: $festival-light; }
+  &.spectacle{ background: $spectacle-main;color: $spectacle-light; }
+}
+
+
+// ============================================
+// 14. SÉPARATEUR
+// ============================================
+
+hr {
+  border: none;
+  border-top: 0.5px solid $sep;
+  margin: 0;
+}
+
+
+// ============================================
+// 15. FOOTER
+// ============================================
+
+footer {
+  background: $dark;
+  padding: $spacing-xl $spacing-lg;
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+  }
+
+  .footer-logo {
+    font-family: $font-titre;
+    color: $text-navbar;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+
+    a {
+      font-size: 0.78rem;
+      color: $text-muted;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $text-navbar;
+      }
+    }
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: $text-muted;
+    width: 100%;
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 0.5px solid #444441;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $spacing-lg $spacing-md;
+  }
+
+  @media (max-width: $mobile) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
+
+// ============================================
+// 16. MODAL
+// ============================================
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 44, 42, 0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg;
+
+  &.ouvert {
+    display: flex;
+  }
+}
+
+.modal-contenu {
+  background: #fff;
+  border-radius: $radius-md;
+  max-width: 620px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(44, 44, 42, 0.25);
+}
+
+.modal-fermer {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  background: rgba(44, 44, 42, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(44, 44, 42, 0.3);
+  }
+}
+
+.modal-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  border-radius: $radius-md $radius-md 0 0;
+}
+
+.modal-img-placeholder {
+  width: 100%;
+  height: 200px;
+  border-radius: $radius-md $radius-md 0 0;
+}
+
+.modal-body {
+  padding: $spacing-xl;
+}
+
+.modal-titre {
+  font-family: $font-titre;
+  font-size: 1.5rem;
+  margin-bottom: $spacing-md;
+  line-height: 1.2;
+
+  .expo & { color: $expo-dark; }
+  .concert & { color: $concert-dark; }
+  .festival & { color: $festival-dark; }
+  .spectacle & { color: $spectacle-dark; }
+}
+
+.modal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+
+  .expo & { background: $expo-light; }
+  .concert & { background: $concert-light; }
+  .festival & { background: $festival-light; }
+  .spectacle & { background: $spectacle-light; }
+}
+
+.modal-meta-row {
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  .expo & { color: $expo-dark; }
+  .concert & { color: $concert-dark; }
+  .festival & { color: $festival-dark; }
+  .spectacle & { color: $spectacle-dark; }
+}
+
+.modal-description {
+  font-size: 0.92rem;
+  color: $text-secondary;
+  line-height: 1.6;
+  margin-bottom: $spacing-md;
+}
+
+.modal-description-longue {
+  font-size: 0.88rem;
+  color: $text-muted;
+  line-height: 1.6;
+  padding-top: $spacing-md;
+  border-top: 0.5px solid $sep;
+}
+
+@media (max-width: $mobile) {
+  .modal-overlay {
+    padding: $spacing-sm;
+    align-items: flex-end;
+  }
+
+  .modal-contenu {
+    max-height: 85vh;
+    border-radius: $radius-md $radius-md 0 0;
+  }
+}
+
+// ============================================
+// 17. SKIP LINK & UTILITAIRES ACCESSIBILITÉ
+// ============================================
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: $spacing-md;
+  background: $dark;
+  color: $text-navbar;
+  padding: 10px 20px;
+  border-radius: $radius-sm;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top 0.2s;
+
+  &:focus {
+    top: $spacing-md;
+  }
+}
+
+// Focus visible global
+:focus-visible {
+  outline: 3px solid #2563EB;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+// Supprimer l'outline par défaut uniquement quand :focus-visible est supporté
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+// ============================================
+// 18. BOUTON "EN SAVOIR PLUS" SUR LES CARTES
+// ============================================
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  .card-link {
+    flex: 1;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.15s;
+
+    &:hover {
+      opacity: 0.95;
+    }
+  }
+}
+
+.btn-detail {
+  display: block;
+  margin: 0 $spacing-md $spacing-md;
+  padding: 9px $spacing-md;
+  border-radius: $radius-full;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: all 0.2s;
+  font-family: $font-texte;
+
+  &.expo {
+    color: $expo-dark;
+    border-color: #B5D4F4;
+    background: $expo-light;
+    &:hover { background: $expo-main; color: $expo-light; border-color: $expo-main; }
+  }
+  &.concert {
+    color: $concert-dark;
+    border-color: #FAC775;
+    background: $concert-light;
+    &:hover { background: $concert-main; color: $concert-text; border-color: $concert-main; }
+  }
+  &.festival {
+    color: $festival-dark;
+    border-color: #CECBF6;
+    background: $festival-light;
+    &:hover { background: $festival-main; color: $festival-light; border-color: $festival-main; }
+  }
+  &.spectacle {
+    color: $spectacle-dark;
+    border-color: #9FE1CB;
+    background: $spectacle-light;
+    &:hover { background: $spectacle-main; color: $spectacle-light; border-color: $spectacle-main; }
+  }
+
+  // Variante claire pour les cartes highlight (fond sombre)
+  &.light {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    margin: $spacing-md 0 0;
+    &:hover { background: rgba(255, 255, 255, 0.3); }
+  }
+}
+
+.card-highlight {
+  display: flex;
+  flex-direction: column;
+
+  .card-highlight-link {
+    flex: 1;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+
+// ============================================
+// 19. MENU BURGER (mobile)
+// ============================================
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid rgba(241, 239, 232, 0.3);
+  border-radius: $radius-sm;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: $text-navbar;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  &:hover {
+    border-color: rgba(241, 239, 232, 0.7);
+  }
+
+  // Croix quand ouvert
+  &.open {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+
+  @media (max-width: $tablet) {
+    display: flex;
+  }
+}
+
+
+// ============================================
+// 20. PAGE DE DÉTAIL ÉVÉNEMENT
+// ============================================
+
+.detail-contenu {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-lg $spacing-xxl;
+
+  @media (max-width: $tablet) {
+    padding: $spacing-lg $spacing-md $spacing-xl;
+  }
+}
+
+.btn-retour {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $text-secondary;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: $radius-full;
+  border: 1px solid $sep;
+  margin-bottom: $spacing-xl;
+  transition: all 0.2s;
+  background: #fff;
+
+  &:hover {
+    color: $dark;
+    border-color: $dark;
+    background: $bg;
+  }
+}
+
+.detail-hero {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  margin-bottom: $spacing-xl;
+  min-height: 320px;
+
+  @media (max-width: $tablet) {
+    min-height: 220px;
+  }
+}
+
+.detail-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+
+  @media (max-width: $tablet) {
+    height: 240px;
+  }
+}
+
+.detail-img-placeholder {
+  width: 100%;
+  height: 320px;
+
+  @media (max-width: $tablet) {
+    height: 200px;
+  }
+}
+
+.detail-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: $spacing-xl;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+
+  .detail-titre {
+    font-family: $font-titre;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: #fff;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+}
+
+.detail-body {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: $spacing-xl;
+  align-items: start;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-sidebar {
+  position: sticky;
+  top: 80px;
+
+  @media (max-width: $tablet) {
+    position: static;
+  }
+}
+
+.detail-meta {
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &.expo { background: $expo-light; border: 1px solid #B5D4F4; }
+  &.concert { background: $concert-light; border: 1px solid #FAC775; }
+  &.festival { background: $festival-light; border: 1px solid #CECBF6; }
+  &.spectacle { background: $spectacle-light; border: 1px solid #9FE1CB; }
+}
+
+.detail-meta-titre {
+  font-family: $font-texte;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: $spacing-xs;
+
+  .expo & { color: $expo-dark; }
+  .concert & { color: $concert-dark; }
+  .festival & { color: $festival-dark; }
+  .spectacle & { color: $spectacle-dark; }
+}
+
+.detail-meta-item {
+  display: flex;
+  gap: $spacing-sm;
+  align-items: flex-start;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  strong {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  span {
+    font-size: 0.88rem;
+  }
+
+  small {
+    font-size: 0.78rem;
+    opacity: 0.8;
+  }
+
+  .expo & { svg, strong { color: $expo-dark; } span { color: $expo-mid; } }
+  .concert & { svg, strong { color: $concert-dark; } span { color: $concert-mid; } }
+  .festival & { svg, strong { color: $festival-dark; } span { color: $festival-mid; } }
+  .spectacle & { svg, strong { color: $spectacle-dark; } span { color: $spectacle-mid; } }
+}
+
+.btn-site {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  margin-top: $spacing-sm;
+  padding: 10px $spacing-md;
+  border-radius: $radius-full;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: $font-texte;
+
+  &.expo { background: $expo-dark; color: $expo-light; &:hover { background: $expo-mid; } }
+  &.concert { background: $concert-dark; color: $concert-light; &:hover { background: $concert-mid; } }
+  &.festival { background: $festival-dark; color: $festival-light; &:hover { background: $festival-mid; } }
+  &.spectacle { background: $spectacle-dark; color: $spectacle-light; &:hover { background: $spectacle-mid; } }
+}
+
+.detail-main {}
+
+.detail-section-titre {
+  font-family: $font-titre;
+  font-size: 1.3rem;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 0.5px solid $sep;
+
+  &.expo { color: $expo-dark; border-color: #B5D4F4; }
+  &.concert { color: $concert-dark; border-color: #FAC775; }
+  &.festival { color: $festival-dark; border-color: #CECBF6; }
+  &.spectacle { color: $spectacle-dark; border-color: #9FE1CB; }
+}
+
+.detail-description {
+  font-size: 1rem;
+  color: $text-secondary;
+  line-height: 1.7;
+  margin-bottom: $spacing-lg;
+}
+
+.detail-description-longue {
+  font-size: 0.92rem;
+  color: $text-muted;
+  line-height: 1.7;
+  padding-top: $spacing-lg;
+  border-top: 0.5px solid $sep;
+}
+
+.detail-not-found {
+  text-align: center;
+  padding: $spacing-xxl $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+}

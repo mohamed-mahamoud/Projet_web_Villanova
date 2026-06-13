@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VilleNova — Agenda culturel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../sass/style.css" />
+</head>
+<body data-page="accueil">
+
+  <nav aria-label="Navigation principale">
+    <a href="index.html" class="logo" aria-label="VilleNova — Retour à l'accueil">VilleNova</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="active-accueil" aria-current="page">Accueil</a></li>
+      <li><a href="expositions.html">Expositions</a></li>
+      <li><a href="concerts.html">Concerts</a></li>
+      <li><a href="festivals.html">Festivals</a></li>
+      <li><a href="spectacles.html">Spectacles</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenu-principal">
+
+    <section class="hero" aria-labelledby="hero-titre">
+      <p class="hero-label">Agenda culturel · VilleNova</p>
+      <h1 id="hero-titre">La culture de votre ville,<br>au même endroit.</h1>
+      <p>Concerts, expositions, festivals, spectacles — découvrez tout ce qui se passe près de chez vous.</p>
+      <div class="search-wrap">
+        <form role="search" aria-label="Rechercher un événement">
+          <label for="search-accueil" class="sr-only">Rechercher un événement ou un lieu</label>
+          <div class="search-bar">
+            <input id="search-accueil" type="text" placeholder="Rechercher un événement, un lieu…" autocomplete="off" />
+          </div>
+          <button class="btn-search" type="submit">Rechercher</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Filtres par catégorie -->
+    <div class="filter-row" role="group" aria-label="Filtrer les événements par catégorie">
+      <span class="filter-label" aria-hidden="true">Filtrer :</span>
+      <button class="chip active" data-categorie="tous" role="button" aria-pressed="true">Tous</button>
+      <button class="chip expo" data-categorie="exposition" role="button" aria-pressed="false">Expositions</button>
+      <button class="chip concert" data-categorie="concert" role="button" aria-pressed="false">Concerts</button>
+      <button class="chip festival" data-categorie="festival" role="button" aria-pressed="false">Festivals</button>
+      <button class="chip spectacle" data-categorie="spectacle" role="button" aria-pressed="false">Spectacles</button>
+    </div>
+
+    <section class="section" aria-labelledby="titre-une">
+      <div class="section-header">
+        <h2 id="titre-une">À la une</h2>
+        <a href="expositions.html" class="see-all">Voir tout →</a>
+      </div>
+      <div class="cards" id="cards-une" aria-label="Événements à la une">
+        <p role="status">Chargement…</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-weekend">
+      <div class="section-header">
+        <h2 id="titre-weekend">Ce week-end</h2>
+        <a href="expositions.html" class="see-all">Voir tout →</a>
+      </div>
+      <div class="cards" id="cards-weekend" aria-label="Événements ce week-end">
+        <p role="status">Chargement…</p>
+      </div>
+    </section>
+
+  </main>
+
+  <hr />
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">VilleNova</span>
+      <ul class="footer-links">
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Accessibilité</a></li>
+        <li><a href="#">Plan du site</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 VilleNova — Collectivité territoriale. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="../Java/api.js"></script>
+</body>
+</html>
