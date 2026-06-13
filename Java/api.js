@@ -87,7 +87,8 @@ function escapeHTML(str) {
 
 // Construire l'URL vers la page de détail
 function urlDetail(uid) {
-  return `event-detail.html?id=${uid}`;
+  const base = window.location.pathname.includes('/html/') ? '' : 'html/';
+  return `${base}event-detail.html?id=${uid}`;
 }
 
 
@@ -331,7 +332,7 @@ async function chargerDetail() {
     conteneur.innerHTML = `
       <div class="detail-not-found">
         <p>Cet événement est introuvable ou n'est plus disponible.</p>
-        <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
+        <a href="../index.html" class="btn-retour">← Retour à l'accueil</a>
       </div>
     `;
     return;
