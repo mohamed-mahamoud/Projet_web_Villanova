@@ -62,9 +62,15 @@ function labelCategorie(cat) {
 }
 
 function recupererImage(evenement) {
-  return evenement.image?.base
-    ? `${evenement.image.base}${evenement.image.filename}`
-    : null;
+  if (!evenement.image?.base) return null;
+  const base = evenement.image.base;
+  const filename = evenement.image.filename;
+  return {
+    small:    `${base}${filename}`,
+    medium:   `${base}${filename}`,
+    large:    `${base}${filename}`,
+    fallback: `${base}${filename}`
+  };
 }
 
 const couleursCategorie = {
@@ -109,7 +115,19 @@ function genererCarteHTML(evenement) {
   const detail = urlDetail(uid);
 
   const imgHTML = image
-    ? `<img src="${image}" alt="" role="presentation" />`
+    ? `<picture>
+        <source media="(max-width: 480px)" srcset="${image.small}" type="image/jpeg" />
+        <source media="(max-width: 768px)" srcset="${image.medium}" type="image/jpeg" />
+        <img
+          src="${image.large}"
+          alt="${titre}"
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="160"
+          style="aspect-ratio:400/160;width:100%;height:100%;object-fit:cover;"
+        />
+      </picture>`
     : `<div class="card-img-placeholder" style="background:${couleursCategorie[cat]};" aria-hidden="true"></div>`;
 
   return `
@@ -356,7 +374,19 @@ async function chargerDetail() {
   if (titreDoc) titreDoc.textContent = `${titre} — VilleNova`;
 
   const imgHTML = image
-    ? `<img src="${image}" alt="${titre}" class="detail-img" />`
+    ? `<picture>
+        <source media="(max-width: 480px)" srcset="${image.medium}" type="image/jpeg" />
+        <img
+          src="${image.large}"
+          alt="${titre}"
+          class="detail-img"
+          decoding="async"
+          width="1100"
+          height="380"
+          style="aspect-ratio:1100/380;"
+          fetchpriority="high"
+        />
+      </picture>`
     : `<div class="detail-img-placeholder" style="background:${couleursCategorie[cat]};" aria-hidden="true"></div>`;
 
   conteneur.className = `detail-contenu ${cat}`;
