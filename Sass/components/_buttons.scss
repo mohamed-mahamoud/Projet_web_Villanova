@@ -1,0 +1,75 @@
+// ============================================
+// VILLENOVA — BOUTONS
+// ============================================
+
+// Bouton "En savoir plus" sur les cartes
+.btn-detail {
+  display: block;
+  margin: 0 $spacing-md $spacing-md;
+  padding: 9px $spacing-md;
+  border-radius: $radius-full;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: all 0.2s;
+  font-family: $font-texte;
+  @include focus-visible;
+
+  &.expo     { color: $expo-dark;     border-color: #B5D4F4; background: $expo-light;     &:hover { background: $expo-main;     color: $expo-light;    border-color: $expo-main; } }
+  &.concert  { color: $concert-dark;  border-color: #FAC775; background: $concert-light;  &:hover { background: $concert-main;  color: $concert-text;  border-color: $concert-main; } }
+  &.festival { color: $festival-dark; border-color: #CECBF6; background: $festival-light; &:hover { background: $festival-main; color: $festival-light; border-color: $festival-main; } }
+  &.spectacle{ color: $spectacle-dark;border-color: #9FE1CB; background: $spectacle-light;&:hover { background: $spectacle-main;color: $spectacle-light;border-color: $spectacle-main; } }
+
+  &.light {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
+    color: #fff;
+    margin: $spacing-md 0 0;
+    &:hover { background: rgba(255,255,255,0.3); }
+  }
+}
+
+// Bouton retour (page détail)
+.btn-retour {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $text-secondary;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: $radius-full;
+  border: 1px solid $sep;
+  margin-bottom: $spacing-xl;
+  transition: all 0.2s;
+  background: #fff;
+  @include focus-visible;
+
+  &:hover { color: $dark; border-color: $dark; background: $bg; }
+}
+
+// Bouton site officiel (page détail)
+.btn-site {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  margin-top: $spacing-sm;
+  padding: 10px $spacing-md;
+  border-radius: $radius-full;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: $font-texte;
+  @include focus-visible;
+
+  &.expo     { background: $expo-dark;     color: $expo-light;     &:hover { background: $expo-mid; } }
+  &.concert  { background: $concert-dark;  color: $concert-light;  &:hover { background: $concert-mid; } }
+  &.festival { background: $festival-dark; color: $festival-light; &:hover { background: $festival-mid; } }
+  &.spectacle{ background: $spectacle-dark;color: $spectacle-light;&:hover { background: $spectacle-mid; } }
+}

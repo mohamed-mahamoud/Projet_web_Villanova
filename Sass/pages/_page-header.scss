@@ -1,0 +1,49 @@
+// ============================================
+// VILLENOVA — PAGE HEADER (pages catégories)
+// ============================================
+
+.page-header {
+  padding: $spacing-xxl $spacing-lg $spacing-xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    opacity: 0.15;
+    background: currentColor;
+  }
+
+  &-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .page-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  h1 { margin-bottom: 0.7rem; }
+
+  p {
+    max-width: 500px;
+    margin-bottom: $spacing-xl;
+  }
+
+  &.expo     { background: linear-gradient(135deg, #B5D4F4 0%, $expo-light 60%);     h1, .page-label { color: $expo-dark; }     p { color: $expo-mid; } }
+  &.concert  { background: linear-gradient(135deg, #FAC775 0%, $concert-light 60%);  h1, .page-label { color: $concert-dark; }  p { color: $concert-mid; } }
+  &.festival { background: linear-gradient(135deg, #CECBF6 0%, $festival-light 60%); h1, .page-label { color: $festival-dark; } p { color: $festival-mid; } }
+  &.spectacle{ background: linear-gradient(135deg, #9FE1CB 0%, $spectacle-light 60%);h1, .page-label { color: $spectacle-dark; }p { color: $spectacle-mid; } }
+
+  @include tablet { padding: $spacing-xl $spacing-md $spacing-lg; }
+}

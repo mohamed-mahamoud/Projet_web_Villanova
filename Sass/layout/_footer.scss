@@ -1,0 +1,52 @@
+// ============================================
+// VILLENOVA — FOOTER
+// ============================================
+
+footer {
+  background: $dark;
+  padding: $spacing-xl $spacing-lg;
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+  }
+
+  .footer-logo {
+    font-family: $font-titre;
+    color: $text-navbar;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+
+    a {
+      font-size: 0.78rem;
+      color: $text-muted;
+      transition: color 0.2s;
+      @include focus-visible;
+      &:hover { color: $text-navbar; }
+    }
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: $text-muted;
+    width: 100%;
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 0.5px solid #444441;
+  }
+
+  @include tablet { padding: $spacing-lg $spacing-md; }
+
+  @include mobile {
+    .footer-inner { @include flex-column; align-items: flex-start; }
+  }
+}

@@ -1,0 +1,102 @@
+// ============================================
+// VILLENOVA — NAVBAR
+// ============================================
+
+nav {
+  background: $dark;
+  padding: 0 $spacing-lg;
+  @include flex-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .logo {
+    font-family: $font-titre;
+    color: $text-navbar;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    @include focus-visible;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: $spacing-sm;
+
+    a {
+      display: block;
+      padding: 7px $spacing-md;
+      border-radius: $radius-full;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: $text-navbar;
+      border: 0.5px solid $sep;
+      transition: border-color 0.2s;
+      @include focus-visible;
+
+      &:hover { border-color: $text-muted; }
+
+      &.active-accueil  { background: $sep;            color: $dark;          border-color: $sep; }
+      &.active-expo     { background: $expo-light;     color: $expo-dark;     border-color: $expo-main; }
+      &.active-concert  { background: $concert-light;  color: $concert-dark;  border-color: $concert-main; }
+      &.active-festival { background: $festival-light; color: $festival-dark; border-color: $festival-main; }
+      &.active-spectacle{ background: $spectacle-light;color: $spectacle-dark;border-color: $spectacle-main; }
+    }
+  }
+
+  @include tablet {
+    padding: 0 $spacing-md;
+
+    .nav-links {
+      display: none;
+      @include flex-column;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: $dark;
+      padding: $spacing-md;
+      gap: 6px;
+      border-top: 0.5px solid #444441;
+
+      &.open { display: flex; }
+
+      a { border-radius: $radius-sm; padding: 10px $spacing-md; }
+    }
+  }
+}
+
+// Menu burger
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid rgba(241,239,232,0.3);
+  border-radius: $radius-sm;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  @include focus-visible;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: $text-navbar;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  &:hover { border-color: rgba(241,239,232,0.7); }
+
+  &.open {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+
+  @include tablet { display: flex; }
+}

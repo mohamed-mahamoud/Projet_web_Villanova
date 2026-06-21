@@ -1,0 +1,25 @@
+// ============================================
+// VILLENOVA — TYPOGRAPHIE
+// ============================================
+
+h1, h2, h3 {
+  font-family: $font-titre;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: $dark;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: $dark;
+}
+
+h3 { font-size: 1rem; }
+
+p {
+  font-size: 0.95rem;
+  color: $text-secondary;
+}

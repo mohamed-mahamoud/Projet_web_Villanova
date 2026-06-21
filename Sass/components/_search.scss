@@ -1,0 +1,58 @@
+// ============================================
+// VILLENOVA — BARRE DE RECHERCHE
+// ============================================
+
+.search-wrap {
+  display: flex;
+  gap: 12px;
+  max-width: 560px;
+
+  @include tablet { flex-direction: column; }
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid $sep;
+  border-radius: $radius-full;
+  padding: 12px 20px;
+  transition: border-color 0.2s;
+
+  &:focus-within { border-color: $dark; }
+
+  svg { flex-shrink: 0; color: $text-muted; }
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: $font-texte;
+    color: $dark;
+    background: transparent;
+
+    &::placeholder { color: $text-muted; }
+  }
+
+  &.expo     { border-color: #85B7EB; input::placeholder { color: #85B7EB; } &:focus-within { border-color: $expo-main; } }
+  &.concert  { border-color: #FAC775; input::placeholder { color: #FAC775; } &:focus-within { border-color: $concert-main; } }
+  &.festival { border-color: #CECBF6; input::placeholder { color: #CECBF6; } &:focus-within { border-color: $festival-main; } }
+  &.spectacle{ border-color: #9FE1CB; input::placeholder { color: #9FE1CB; } &:focus-within { border-color: $spectacle-main; } }
+}
+
+.btn-search {
+  @include btn-pill($dark, $text-navbar, rgba(44,44,42,0.85));
+  padding: 12px $spacing-lg;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  @include focus-visible;
+
+  &.expo     { background: $expo-dark;     color: $expo-light; }
+  &.concert  { background: $concert-dark;  color: $concert-light; }
+  &.festival { background: $festival-dark; color: $festival-light; }
+  &.spectacle{ background: $spectacle-dark;color: $spectacle-light; }
+}

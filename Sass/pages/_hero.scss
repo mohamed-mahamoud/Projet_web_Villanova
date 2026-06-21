@@ -1,0 +1,27 @@
+// ============================================
+// VILLENOVA — HERO (page d'accueil)
+// ============================================
+
+.hero {
+  padding: $spacing-xxl $spacing-lg $spacing-xl;
+  max-width: 900px;
+  margin: 0 auto;
+
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $text-muted;
+    margin-bottom: $spacing-md;
+  }
+
+  h1 { margin-bottom: $spacing-md; }
+
+  p {
+    margin-bottom: $spacing-xl;
+    max-width: 560px;
+  }
+
+  @include tablet { padding: $spacing-xl $spacing-md $spacing-lg; }
+}

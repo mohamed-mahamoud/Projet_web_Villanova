@@ -1,0 +1,101 @@
+// ============================================
+// VILLENOVA — MIXINS
+// ============================================
+
+// Responsive
+@mixin mobile {
+  @media (max-width: $mobile) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) { @content; }
+}
+
+// Flex layouts
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Carte de base
+@mixin card-base {
+  background: #fff;
+  border-radius: $radius-md;
+  border: 0.5px solid $sep;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(44, 44, 42, 0.1);
+  }
+}
+
+// Badge catégorie
+@mixin badge-categorie($bg, $color) {
+  background: $bg;
+  color: $color;
+  border-radius: $radius-full;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+// Bouton pill
+@mixin btn-pill($bg, $color, $hover-bg) {
+  background: $bg;
+  color: $color;
+  border-radius: $radius-full;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  font-family: $font-texte;
+
+  &:hover { background: $hover-bg; }
+}
+
+// Troncature texte multi-lignes
+@mixin truncate($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Focus accessible
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 3px solid #2563EB;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+// Variante couleur section-header par catégorie
+@mixin categorie-couleurs($light, $main, $dark-col, $mid, $border) {
+  border-color: $border;
+  h2 { color: $dark-col; }
+  .count { color: $mid; background: $light; border: 1px solid $border; }
+}

@@ -1,0 +1,128 @@
+// ============================================
+// VILLENOVA — CARTES
+// ============================================
+
+// Carte standard
+.card {
+  @include card-base;
+  @include flex-column;
+  text-decoration: none;
+  color: inherit;
+
+  &.expo     { border-color: #B5D4F4; &:hover { box-shadow: 0 8px 24px rgba(12,68,124,0.12); } }
+  &.concert  { border-color: #FAC775; &:hover { box-shadow: 0 8px 24px rgba(99,56,6,0.12); } }
+  &.festival { border-color: #CECBF6; &:hover { box-shadow: 0 8px 24px rgba(60,52,137,0.12); } }
+  &.spectacle{ border-color: #9FE1CB; &:hover { box-shadow: 0 8px 24px rgba(8,80,65,0.12); } }
+
+  .card-link {
+    flex: 1;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    &:hover { opacity: 0.95; }
+    @include focus-visible;
+  }
+}
+
+.card-img-wrap {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.card-img-placeholder {
+  width: 100%;
+  height: 160px;
+  @include flex-center;
+}
+
+.card-body { padding: 14px $spacing-md $spacing-md; }
+
+.card-title {
+  font-family: $font-titre;
+  font-size: 1rem;
+  margin-bottom: $spacing-sm;
+  line-height: 1.3;
+  @include truncate(2);
+
+  &.expo     { color: $expo-dark; }
+  &.concert  { color: $concert-dark; }
+  &.festival { color: $festival-dark; }
+  &.spectacle{ color: $spectacle-dark; }
+}
+
+.card-meta {
+  @include flex-column;
+  gap: $spacing-xs;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+
+  svg { flex-shrink: 0; }
+
+  &.expo     { color: $expo-mid; }
+  &.concert  { color: $concert-mid; }
+  &.festival { color: $festival-mid; }
+  &.spectacle{ color: $spectacle-mid; }
+}
+
+.card-tag {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  font-size: 0.7rem;
+
+  &.expo     { background: $expo-light;     color: $expo-dark;     border: 1px solid #B5D4F4; }
+  &.concert  { background: $concert-light;  color: $concert-dark;  border: 1px solid #FAC775; }
+  &.festival { background: $festival-light; color: $festival-dark; border: 1px solid #CECBF6; }
+  &.spectacle{ background: $spectacle-light;color: $spectacle-dark;border: 1px solid #9FE1CB; }
+}
+
+
+// Carte highlight (à la une)
+.card-highlight {
+  border-radius: $radius-md;
+  padding: $spacing-xl;
+  @include flex-column;
+  justify-content: flex-end;
+  min-height: 220px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  &:hover { transform: translateY(-3px); }
+
+  .badge { position: static; display: inline-block; margin-bottom: $spacing-md; }
+  .card-title { font-size: 1.2rem; margin-bottom: $spacing-sm; }
+
+  .card-highlight-link {
+    flex: 1;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    @include focus-visible;
+  }
+
+  &.expo     { background: $expo-dark;     &::before { background: rgba(55,138,221,0.25); }  &:hover { box-shadow: 0 8px 24px rgba(12,68,124,0.3); }  .card-title { color: $expo-light; }     .meta-row { color: #85B7EB; } }
+  &.concert  { background: $concert-dark;  &::before { background: rgba(239,159,39,0.2); }   &:hover { box-shadow: 0 8px 24px rgba(99,56,6,0.3); }   .card-title { color: $concert-light; }  .meta-row { color: #FAC775; } }
+  &.festival { background: $festival-dark; &::before { background: rgba(127,119,221,0.25); } &:hover { box-shadow: 0 8px 24px rgba(60,52,137,0.3); } .card-title { color: $festival-light; } .meta-row { color: #CECBF6; } }
+  &.spectacle{ background: $spectacle-dark;&::before { background: rgba(29,158,117,0.25); }  &:hover { box-shadow: 0 8px 24px rgba(8,80,65,0.3); }   .card-title { color: $spectacle-light; }.meta-row { color: #9FE1CB; } }
+}

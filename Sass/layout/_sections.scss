@@ -1,0 +1,50 @@
+// ============================================
+// VILLENOVA — SECTIONS & GRILLE
+// ============================================
+
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg $spacing-xxl;
+
+  @include tablet { padding: 0 $spacing-md $spacing-xl; }
+}
+
+.section-header {
+  @include flex-between;
+  align-items: baseline;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 0.5px solid $sep;
+
+  h2 { font-family: $font-titre; font-size: 1.4rem; }
+
+  .see-all {
+    font-size: 0.8rem;
+    color: $text-muted;
+    font-weight: 500;
+    transition: color 0.2s;
+    @include focus-visible;
+    &:hover { color: $dark; }
+  }
+
+  .count {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: $radius-full;
+  }
+
+  &.expo     { @include categorie-couleurs($expo-light,     $expo-main,     $expo-dark,     $expo-mid,     #85B7EB); }
+  &.concert  { @include categorie-couleurs($concert-light,  $concert-main,  $concert-dark,  $concert-mid,  #FAC775); }
+  &.festival { @include categorie-couleurs($festival-light, $festival-main, $festival-dark, $festival-mid, #CECBF6); }
+  &.spectacle{ @include categorie-couleurs($spectacle-light,$spectacle-main,$spectacle-dark,$spectacle-mid,#9FE1CB); }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $spacing-md;
+
+  @include tablet { grid-template-columns: 1fr 1fr; gap: 12px; }
+  @include mobile { grid-template-columns: 1fr; }
+}

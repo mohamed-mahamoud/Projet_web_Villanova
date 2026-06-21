@@ -1,0 +1,138 @@
+// ============================================
+// VILLENOVA — PAGE DÉTAIL ÉVÉNEMENT
+// ============================================
+
+.detail-contenu {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-lg $spacing-xxl;
+
+  @include tablet { padding: $spacing-lg $spacing-md $spacing-xl; }
+}
+
+.detail-hero {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  margin-bottom: $spacing-xl;
+  min-height: 320px;
+
+  @include tablet { min-height: 220px; }
+}
+
+.detail-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+
+  @include tablet { height: 240px; }
+}
+
+.detail-img-placeholder {
+  width: 100%;
+  height: 320px;
+
+  @include tablet { height: 200px; }
+}
+
+.detail-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: $spacing-xl;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+
+  .detail-titre {
+    font-family: $font-titre;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: #fff;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+}
+
+.detail-body {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: $spacing-xl;
+  align-items: start;
+
+  @include tablet { grid-template-columns: 1fr; }
+}
+
+.detail-sidebar {
+  position: sticky;
+  top: 80px;
+
+  @include tablet { position: static; }
+}
+
+.detail-meta {
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  @include flex-column;
+  gap: $spacing-md;
+
+  &.expo     { background: $expo-light;     border: 1px solid #B5D4F4; }
+  &.concert  { background: $concert-light;  border: 1px solid #FAC775; }
+  &.festival { background: $festival-light; border: 1px solid #CECBF6; }
+  &.spectacle{ background: $spectacle-light;border: 1px solid #9FE1CB; }
+}
+
+.detail-meta-titre {
+  font-family: $font-texte;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: $spacing-xs;
+
+  .expo &     { color: $expo-dark; }
+  .concert &  { color: $concert-dark; }
+  .festival & { color: $festival-dark; }
+  .spectacle &{ color: $spectacle-dark; }
+}
+
+.detail-meta-item {
+  display: flex;
+  gap: $spacing-sm;
+  align-items: flex-start;
+
+  svg { flex-shrink: 0; margin-top: 3px; }
+  div { @include flex-column; gap: 2px; }
+
+  strong { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  span   { font-size: 0.88rem; }
+  small  { font-size: 0.78rem; opacity: 0.8; }
+
+  .expo &     { svg, strong { color: $expo-dark; }     span { color: $expo-mid; } }
+  .concert &  { svg, strong { color: $concert-dark; }  span { color: $concert-mid; } }
+  .festival & { svg, strong { color: $festival-dark; } span { color: $festival-mid; } }
+  .spectacle &{ svg, strong { color: $spectacle-dark; }span { color: $spectacle-mid; } }
+}
+
+.detail-section-titre {
+  font-family: $font-titre;
+  font-size: 1.3rem;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 0.5px solid $sep;
+
+  &.expo     { color: $expo-dark;     border-color: #B5D4F4; }
+  &.concert  { color: $concert-dark;  border-color: #FAC775; }
+  &.festival { color: $festival-dark; border-color: #CECBF6; }
+  &.spectacle{ color: $spectacle-dark;border-color: #9FE1CB; }
+}
+
+.detail-description        { font-size: 1rem;   color: $text-secondary; line-height: 1.7; margin-bottom: $spacing-lg; }
+.detail-description-longue { font-size: 0.92rem; color: $text-muted;     line-height: 1.7; padding-top: $spacing-lg; border-top: 0.5px solid $sep; }
+
+.detail-not-found {
+  text-align: center;
+  padding: $spacing-xxl $spacing-lg;
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-lg;
+}

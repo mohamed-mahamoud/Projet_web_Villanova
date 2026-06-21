@@ -1,0 +1,43 @@
+// ============================================
+// VILLENOVA — FILTRES (chips)
+// ============================================
+
+.filter-row {
+  padding: $spacing-lg $spacing-lg $spacing-xl;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .filter-label {
+    font-size: 0.78rem;
+    color: $text-muted;
+    font-weight: 500;
+    margin-right: $spacing-xs;
+  }
+
+  @include tablet { padding: $spacing-md; }
+}
+
+.chip {
+  padding: 6px $spacing-md;
+  border-radius: $radius-full;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid $sep;
+  background: transparent;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: $font-texte;
+  @include focus-visible;
+
+  &:hover, &.active { background: $dark; color: $text-navbar; border-color: $dark; }
+
+  &.expo     { border-color: #85B7EB; color: $expo-mid;     &:hover, &.active { background: $expo-main;     color: $expo-light;    border-color: $expo-main; } }
+  &.concert  { border-color: #FAC775; color: $concert-mid;  &:hover, &.active { background: $concert-main;  color: $concert-text;  border-color: $concert-main; } }
+  &.festival { border-color: #CECBF6; color: $festival-mid; &:hover, &.active { background: $festival-main; color: $festival-light; border-color: $festival-main; } }
+  &.spectacle{ border-color: #9FE1CB; color: $spectacle-mid;&:hover, &.active { background: $spectacle-main;color: $spectacle-light;border-color: $spectacle-main; } }
+}
